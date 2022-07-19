@@ -1,31 +1,25 @@
 package com.example.map_moscow
 
-import android.R
+
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Transformations.map
+import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.mapview.MapView
 
-/*
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}
-*/
 
 class MapActivity : Activity() {
     /**
      * Замените "your_api_key" валидным API-ключом.
      * Ключ можно получить на сайте https://developer.tech.yandex.ru/
      */
-    private val MAPKIT_API_KEY = "your_api_key"
-    //private val TARGET_LOCATION: Point = Point(59.945933, 30.320045)
+    private val MAPKIT_API_KEY = "0c55fa0e-f2f1-48c4-8ae3-cf17a187129b"
+    private val TARGET_LOCATION: Point = Point(59.945933, 30.320045)
     private var mapView: MapView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         /**
@@ -41,21 +35,18 @@ class MapActivity : Activity() {
          */
         MapKitFactory.initialize(this)
         // Создание MapView.
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /*
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-        */
         mapView = findViewById<View>(R.id.mapview) as MapView
-        /*
+
         // Перемещение камеры в центр Санкт-Петербурга.
         mapView!!.map.move(
             CameraPosition(TARGET_LOCATION, 14.0f, 0.0f, 0.0f),
-            Animation(Animation.Type.SMOOTH, 5),
+            Animation(Animation.Type.SMOOTH, 5.0f),
             null
         )
-        */
+
     }
 
     override fun onStop() {
